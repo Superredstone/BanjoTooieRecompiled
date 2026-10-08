@@ -27,3 +27,4 @@ package/
 # Python bytecode from the tools.
 __pycache__/
 *.pyc
+.devenv
