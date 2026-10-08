@@ -28,3 +28,9 @@ package/
 __pycache__/
 *.pyc
 .devenv
+
+# Flatpak build artifacts
+.flatpak-builder/
+builddir/
+repo/
+*.flatpak

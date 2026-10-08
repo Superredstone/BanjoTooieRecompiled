@@ -23,6 +23,7 @@
       "name": "BanjoTooieRecompiled",
       "buildsystem": "simple",
       "build-commands": [
+        "if [ -f lib/rt64/src/contrib/dxc/bin/x64/dxc-linux ] && ! lib/rt64/src/contrib/dxc/bin/x64/dxc-linux --help >/dev/null 2>&1; then mv lib/rt64/src/contrib/dxc/bin/x64/dxc-linux lib/rt64/src/contrib/dxc/bin/x64/dxc-linux-raw && printf '#!/bin/sh\\nexec /lib64/ld-linux-x86-64.so.2 \"$(dirname \"$0\")/dxc-linux-raw\" \"$@\"\\n' > lib/rt64/src/contrib/dxc/bin/x64/dxc-linux && chmod +x lib/rt64/src/contrib/dxc/bin/x64/dxc-linux; fi",
         "cmake -S . -B build-cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DRECOMP_FLATPAK=ON -DNFD_PORTAL=ON",
         "cmake --build build-cmake --target BanjoTooieRecompiled --parallel",
         "mkdir -p /app/bin",
